@@ -3,6 +3,9 @@ from flask import Flask, request, jsonify
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
+from dotenv import load_dotenv
+load_dotenv()
+
 DB_PASSWORD = os.environ.get('DB_PASSWORD')
 
 app = Flask(__name__)
