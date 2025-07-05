@@ -1,0 +1,38 @@
+# to add kafka user
+sudo adduser kafka
+sudo usermod -aG sudo kafka
+
+# to switch to kafka user
+sudo su -kafka
+
+# to download and extract kafka
+wget https://archive.apache.org/dist/kafka/3.7.0/kafka_2.13-3.7.0.tgz
+tar -xvzf kafka_2.13–3.7.0.tgz
+mv kafka_2.13–3.7.0 kafka
+cd kafka
+
+# to start the zookeeper 
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+#OR - to run zookeper in background
+nohup bin/zookeeper-server-start.sh config/zookeeper.properties > zookeeper.log 2>&1 &
+
+# start kafka, in another terminal
+cd kafka
+bin/kafka-server-start.sh config/server.properties
+
+# OR - to run it in background
+nohup bin/kafka-server-start.sh config/server.properties > kafka.log 2>&1 &
+
+# Create a topic
+bin/kafka-topics.sh --create --topic <topic_name> --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+# List topics
+bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+
+# Start a producer
+bin/kafka-console-producer.sh --topic test --bootstrap-server localhost:9092
+
+# Start a consumer in another terminal:
+bin/kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server localhost:9092
+
