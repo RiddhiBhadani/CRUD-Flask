@@ -1,9 +1,15 @@
-# to add kafka user
+# to add kafka user : here 'kafka' is your custom user name for kafka
 sudo adduser kafka
 sudo usermod -aG sudo kafka
 
 # to switch to kafka user
 sudo su -kafka
+
+# to delete the 'kafka' user
+sudo deluser kafka
+
+# to check if user exists
+id kafka
 
 # to download and extract kafka
 wget https://archive.apache.org/dist/kafka/3.7.0/kafka_2.13-3.7.0.tgz
@@ -31,8 +37,8 @@ bin/kafka-topics.sh --create --topic <topic_name> --bootstrap-server localhost:9
 bin/kafka-topics.sh --list --bootstrap-server localhost:9092
 
 # Start a producer
-bin/kafka-console-producer.sh --topic test --bootstrap-server localhost:9092
+bin/kafka-console-producer.sh --topic welcome_journey --bootstrap-server localhost:9092
 
 # Start a consumer in another terminal:
-bin/kafka-console-consumer.sh --topic test --from-beginning --bootstrap-server localhost:9092
+bin/kafka-console-consumer.sh --topic welcome_journey --from-beginning --bootstrap-server localhost:9092
 
