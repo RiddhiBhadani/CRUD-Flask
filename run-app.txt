@@ -1,0 +1,13 @@
+# Navigate to your Kafka installation directory before running any commands related to kafka services
+# to start the zookeeper
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+# start kafka, in another terminal
+bin/kafka-server-start.sh config/server.properties
+
+# First, activate your virtual environment and navigate to the project’s root directory, then run any python file:
+# to run flask application - 'app.py' : From Project's root directory
+flask -app src/app.py run
+
+# to run consumer - 'kafka_consumer.py'
+python3 src/kafka_service/kafka_consumer.py

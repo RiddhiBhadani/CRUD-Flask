@@ -3,6 +3,8 @@ from flask import Flask, request, jsonify
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
+from src.kafka_service import kafka_producer
+
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -36,6 +38,14 @@ def create_registration():
     conn.commit()
     cur.close()
     conn.close()
+
+     #Send message to Kafka after successful registration
+    kafka_producer.send_registration_message({
+        "id": reg_id,
+        "name": name,
+        "email": email
+    })
+
     return jsonify({"id": reg_id, "message": "Registration successful"}), 201
 
 # Read (Retrieve all)

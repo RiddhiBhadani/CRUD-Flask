@@ -1,2 +1,4 @@
-src/__pycache__/app.cpython-313.pyc
+src/__pycache__/
+src/kafka_service/__pycache__/
+__pycache__
 .env
