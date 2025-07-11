@@ -9,13 +9,15 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DB_PASSWORD = os.environ.get('DB_PASSWORD')
+DB_NAME = os.environ.get('DB_NAME')
+DB_USER = os.environ.get('DB_USER')
 
 app = Flask(__name__)
 
 def get_db_connection():
     conn = psycopg2.connect(
-        dbname="sampledb",
-        user="riddhi_psql",
+        dbname=DB_NAME,
+        user=DB_USER,
         password=DB_PASSWORD,
         host="localhost"
     )

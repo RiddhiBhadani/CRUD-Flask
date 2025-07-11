@@ -2,3 +2,6 @@ src/__pycache__/
 src/kafka_service/__pycache__/
 __pycache__
 .env
+library
+datasets
+src/data_enrichment/artifacts/

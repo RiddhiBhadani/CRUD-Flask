@@ -1,4 +1,6 @@
-Flask
+flask
 psycopg2-binary
 python-dotenv
 kafka-python
+pyspark
+ipykernel
