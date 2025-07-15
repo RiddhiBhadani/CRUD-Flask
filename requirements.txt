@@ -4,3 +4,4 @@ python-dotenv
 kafka-python
 pyspark
 ipykernel
+delta-spark
